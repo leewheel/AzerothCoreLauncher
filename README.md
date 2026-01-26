@@ -1,5 +1,10 @@
 # AzerothCore 通用启动器
 # AzerothCore General Launcher
+<img width="2204" height="1710" alt="image" src="https://github.com/user-attachments/assets/63c855b9-5a01-4adb-9969-70678391c455" />
+
+<img width="2204" height="1704" alt="image" src="https://github.com/user-attachments/assets/3afa11f4-b667-47d9-800e-26c5cf3a4501" />
+
+
 
 ## 项目简介 | Project Introduction
 
