@@ -22,13 +22,21 @@ AzerothCore General Launcher is a graphical tool developed based on WPF, designe
 
 ## 更新日志 | Changelog
 
-### v1.0.5 (2026-01-30)
+### v1.0.6.3 (2026-01-30)
 
 #### 🎉 新特性 | New Features
 
 **单文件大幅瘦身 | Single File Size Optimization**
 - 🇨🇳 通过组合优化方案（GZip 压缩 + ReadyToRun + 移除调试符号），主程序从 80 MB 降至 45-55 MB，减少约 35-45%
 - 🇺🇸 Reduced main program size from 80 MB to 45-55 MB (35-45% reduction) through combined optimization (GZip compression + ReadyToRun + debug symbols removal)
+
+**下载失败重试功能 | Download Retry Feature**
+- 🇨🇳 Updater 下载窗口新增重试按钮，下载失败后可一键重试，无需重启程序
+- 🇺🇸 Added retry button in Updater download window, allowing one-click retry after download failure without restarting
+
+**错误信息多行显示 | Multi-line Error Display**
+- 🇨🇳 错误提示改为多行显示控件，支持自动换行和滚动，长错误信息更清晰易读
+- 🇺🇸 Error messages now displayed in multi-line control with auto-wrap and scrolling for better readability
 
 #### 🔧 优化改进 | Optimizations
 
@@ -47,6 +55,16 @@ AzerothCore General Launcher is a graphical tool developed based on WPF, designe
 **启用单文件内部压缩 | Enabled Single File Compression**
 - 🇨🇳 .NET 运行时和依赖库自动压缩
 - 🇺🇸 .NET runtime and dependencies automatically compressed
+
+**UI 改进 | UI Improvements**
+- 🇨🇳 机器人配置按钮图标从 👤 改为 🤖，更直观易识别
+- 🇺🇸 Bot configuration button icon changed from 👤 to 🤖 for better recognition
+
+- 🇨🇳 所有顶部按钮增加间距（5px），布局更舒适
+- 🇺🇸 Added spacing (5px) between all top buttons for better layout
+
+- 🇨🇳 优化 ToolTip 显示时长，鼠标离开后立即消失
+- 🇺🇸 Optimized ToolTip display duration, disappears immediately when mouse leaves
 
 #### 📝 技术细节 | Technical Details
 - 🇨🇳 编译器优化 | 🇺🇸 Compiler Optimization: `Optimize=true`
