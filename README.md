@@ -1,5 +1,7 @@
 # AzerothCore 通用启动器
 # AzerothCore General Launcher
+## Since it integrates the.NET 10 environment and all updates, the single file is relatively large.
+
 <img width="2204" height="1706" alt="image" src="https://github.com/user-attachments/assets/5162cba3-3396-4f8c-bdd9-62095398a275" />
 <img width="2194" height="1700" alt="image" src="https://github.com/user-attachments/assets/39591bc5-0aae-448c-8d8d-c90fb4b5eee8" />
 <img width="2198" height="1718" alt="image" src="https://github.com/user-attachments/assets/66599669-6b9a-4bf0-bf3c-6abad60460e2" />
