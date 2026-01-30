@@ -22,7 +22,7 @@ AzerothCore General Launcher is a graphical tool developed based on WPF, designe
 
 ## 更新日志 | Changelog
 
-### v1.0.6.3 (2026-01-30)
+### v1.0.6.4 (2026-01-30)
 
 #### 🎉 新特性 | New Features
 
@@ -65,6 +65,9 @@ AzerothCore General Launcher is a graphical tool developed based on WPF, designe
 
 - 🇨🇳 优化 ToolTip 显示时长，鼠标离开后立即消失
 - 🇺🇸 Optimized ToolTip display duration, disappears immediately when mouse leaves
+
+- 🇨🇳 修复英文状态下主标题显示不全的问题
+- 🇺🇸 Fixed main title truncation issue in English mode
 
 #### 📝 技术细节 | Technical Details
 - 🇨🇳 编译器优化 | 🇺🇸 Compiler Optimization: `Optimize=true`
