@@ -22,6 +22,123 @@ AzerothCore General Launcher is a graphical tool developed based on WPF, designe
 
 ## 更新日志 | Changelog
 
+### v1.0.6.7 (2026-01-31)
+
+#### 🎉 新特性 | New Features
+
+**Worldserver 命令输入功能 | Worldserver Command Input Feature**
+- 🇨🇳 启动器新增向 worldserver 发送命令的功能，支持常用命令快捷输入
+- 🇺🇸 Added ability to send commands to worldserver from launcher, with quick access to common commands
+
+**命令输入界面 | Command Input Interface**
+- 🇨🇳 在世界服务器日志区域添加命令输入框和发送按钮
+- 🇺🇸 Added command input box and send button in world server log area
+
+**常用命令下拉菜单 | Common Commands Dropdown**
+- 🇨🇳 提供常用命令快捷选择（如 `.server info`, `.help`, `.account create` 等）
+- 🇺🇸 Provides quick selection of common commands (e.g., `.server info`, `.help`, `.account create`)
+
+#### 🔧 优化改进 | Optimizations
+
+**完整国际化支持 | Complete Internationalization Support**
+- 🇨🇳 修复所有停止服务器日志的硬编码中文问题（16 个新语言资源键）
+- 🇺🇸 Fixed all hardcoded Chinese text in server stop logs (16 new language resource keys)
+
+**命令格式优化 | Command Format Optimization**
+- 🇨🇳 命令前缀统一为 `AC>`，与 worldserver 控制台保持一致
+- 🇺🇸 Unified command prefix to `AC>` to match worldserver console
+
+**日志消息国际化 | Log Message Internationalization**
+- 🇨🇳 所有服务器启动、停止、异常日志完全支持中英文切换
+- 🇺🇸 All server startup, stop, and exception logs fully support Chinese-English switching
+
+#### 🐛 Bug 修复 | Bug Fixes
+
+**修复重复字典键错误 | Fixed Duplicate Dictionary Key Error**
+- 🇨🇳 删除 `LanguageManager.cs` 中重复的 `logWorldServerStopped` 和 `logAuthServerStopped` 键
+- 🇺🇸 Removed duplicate `logWorldServerStopped` and `logAuthServerStopped` keys in `LanguageManager.cs`
+
+**修复所有硬编码日志 | Fixed All Hardcoded Logs**
+- 🇨🇳 彻底修复停止服务器、启动服务器、程序关闭等所有硬编码中文日志
+- 🇺🇸 Completely fixed all hardcoded Chinese logs for server stop, start, and program closing
+
+#### 🔧 配套服务器更新 | Bundled Server Updates
+
+**Worldserver 控制台命令修复 | Worldserver Console Command Fix**
+- 🇨🇳 修复 worldserver.exe 控制台命令输出不显示的问题
+- 🇺🇸 Fixed worldserver.exe console command output not displaying issue
+
+**问题根源 | Root Cause**
+- 🇨🇳 `utf8print` 函数在 Windows 平台缺少 `fflush(stdout)`，导致命令输出被缓冲
+- 🇺🇸 `utf8print` function missing `fflush(stdout)` on Windows platform, causing command output to be buffered
+
+**诊断日志系统 | Diagnostic Logging System**
+- 🇨🇳 添加完整的 CLI 线程诊断日志（启动、命令接收、排队、EOF 检测等）
+- 🇺🇸 Added comprehensive CLI thread diagnostic logging (startup, command reception, queuing, EOF detection, etc.)
+
+#### 📝 技术细节 | Technical Details
+
+**启动器修改 | Launcher Modifications**
+- 🇨🇳 新增语言资源（16 个）| 🇺🇸 New Language Resources (16 total):
+  - **停止服务器日志 | Server Stop Logs (8)**:
+    - `logStoppingWorldServer` - 正在停止世界服务器 | Stopping world server
+    - `logWorldServerStopped` - 世界服务器已停止 | World server stopped
+    - `logWorldServerStopException` - 世界服务器停止异常 | World server stop exception
+    - `logStoppingAuthServer` - 正在停止认证服务器 | Stopping auth server
+    - `logAuthServerStopped` - 认证服务器已停止 | Auth server stopped
+    - `logAuthServerStopException` - 认证服务器停止异常 | Auth server stop exception
+    - `logStoppingMySQLProcesses` - 正在停止 MySQL 进程 | Stopping MySQL processes
+    - `logAllServersStopped` - 所有服务器已停止 | All servers stopped
+  
+  - **启动服务器日志 | Server Start Logs (5)**:
+    - `logAuthServerStarted2` - 认证服务器已启动 | Auth server started
+    - `logAuthServerStartFailed` - 认证服务器启动失败 | Auth server start failed
+    - `logAuthServerStartException` - 认证服务器启动异常 | Auth server start exception
+    - `logWorldServerStartFailed` - 世界服务器启动失败 | World server start failed
+    - `logWorldServerStartException` - 世界服务器启动异常 | World server start exception
+  
+  - **其他日志 | Other Logs (3)**:
+    - `logProgramClosing` - 程序关闭消息 | Program closing message
+    - `logFoundOldUpdater` - 发现旧更新程序 | Found old updater
+    - `msgCommandSent` - 命令发送消息 | Command sent message
+
+**服务器端修改 | Server-Side Modifications**
+- `1.SourceCode/src/server/apps/worldserver/CommandLine/CliRunnable.cpp`
+  - 修复 `utf8print` 函数缺少 `fflush(stdout)` 的问题
+  - 添加 CLI 线程诊断日志系统
+  - 添加 stdin 有效性检查（Windows 平台）
+
+- `1.SourceCode/src/server/apps/worldserver/Main.cpp`
+  - 添加 CLI 线程创建日志
+  - 添加控制台禁用原因日志
+
+**代码标记 | Code Markers**
+- 🇨🇳 所有修改使用 `//by leewheel 20260131` 和 `//end leewheel` 标记
+- 🇺🇸 All modifications marked with `//by leewheel 20260131` and `//end leewheel`
+
+#### 📦 修改的文件 | Modified Files
+
+**启动器 | Launcher**:
+- `LanguageManager.cs` - 添加 16 个新语言资源键，删除重复键
+- `MainWindow.xaml.cs` - 更新所有硬编码日志为国际化调用，添加命令输入功能
+- `MainWindow.xaml` - 添加命令输入界面元素
+
+**服务器 | Server**:
+- `1.SourceCode/src/server/apps/worldserver/CommandLine/CliRunnable.cpp`
+- `1.SourceCode/src/server/apps/worldserver/Main.cpp`
+
+#### ✅ 验证方法 | Verification Method
+
+**启动器命令输入 | Launcher Command Input**
+- 🇨🇳 在启动器的世界服务器日志区域输入命令（如 `.server info`），点击发送按钮
+- 🇺🇸 Enter command in launcher's world server log area (e.g., `.server info`), click send button
+
+**控制台命令输出 | Console Command Output**
+- 🇨🇳 在 worldserver.exe 控制台直接输入命令，应立即看到输出
+- 🇺🇸 Enter command directly in worldserver.exe console, output should appear immediately
+
+---
+
 ### v1.0.6.6 (2026-01-31)
 
 #### 🎉 新特性 | New Features
