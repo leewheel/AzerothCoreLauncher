@@ -22,6 +22,65 @@ AzerothCore General Launcher is a graphical tool developed based on WPF, designe
 
 ## 更新日志 | Changelog
 
+### v1.0.6.6 (2026-01-31)
+
+#### 🎉 新特性 | New Features
+
+**服务器自动重启功能 | Server Auto-Restart Feature**
+- 🇨🇳 服务器崩溃时自动重启，带10秒倒计时显示
+- 🇺🇸 Automatic server restart on crash with 10-second countdown display
+
+**重启倒计时国际化 | Restart Countdown Internationalization**
+- 🇨🇳 重启倒计时消息完整支持中英文切换
+- 🇺🇸 Restart countdown messages fully support Chinese-English switching
+
+**重启指示灯闪烁效果 | Restart Indicator Flashing Effect**
+- 🇨🇳 重启倒计时期间指示灯橙色/红色交替闪烁
+- 🇺🇸 Indicator alternates between orange and red during restart countdown
+
+**自动重启开关 | Auto-Restart Toggle**
+- 🇨🇳 可通过"崩溃自动重启"复选框启用/禁用自动重启功能
+- 🇺🇸 Enable/disable auto-restart via "Auto-Restart on Crash" checkbox
+
+#### 🔧 优化改进 | Optimizations
+
+**完善国际化支持 | Enhanced Internationalization**
+- 🇨🇳 添加6个新的语言资源键用于自动重启功能
+- 🇺🇸 Added 6 new language resource keys for auto-restart feature
+
+**改进日志消息 | Improved Log Messages**
+- 🇨🇳 优化重启倒计时消息格式，使用 `string.Format()` 支持参数化
+- 🇺🇸 Optimized restart countdown message format using `string.Format()` for parameterization
+
+**视觉效果优化 | Visual Effect Optimization**
+- 🇨🇳 重启倒计时期间指示灯闪烁更加明显和流畅
+- 🇺🇸 More prominent and smooth indicator flashing during restart countdown
+
+#### 🐛 Bug 修复 | Bug Fixes
+
+**修复自动重启消息无国际化 | Fixed Auto-Restart Messages Without Internationalization**
+- 🇨🇳 修复崩溃和重启倒计时消息硬编码中文的问题
+- 🇺🇸 Fixed hardcoded Chinese text in crash and restart countdown messages
+
+**修复消息格式化问题 | Fixed Message Formatting Issues**
+- 🇨🇳 修复重启消息参数顺序和格式化问题
+- 🇺🇸 Fixed parameter order and formatting issues in restart messages
+
+#### 📝 技术细节 | Technical Details
+- 🇨🇳 新增语言资源 | 🇺🇸 New Language Resources:
+  - `logAuthServerCrashed` - 认证服务器崩溃消息 | Auth server crash message
+  - `logWorldServerCrashed` - 世界服务器崩溃消息 | World server crash message
+  - `logRestartingIn` - 重启倒计时开始消息 | Restart countdown start message
+  - `logRestartCountdown` - 重启倒计时消息 | Restart countdown message
+  - `logAuthServerName` - 认证服务器名称 | Auth server name
+  - `logWorldServerName` - 世界服务器名称 | World server name
+
+#### 📦 修改的文件 | Modified Files
+- `LanguageManager.cs` - 添加6个新的语言资源键
+- `MainWindow.xaml.cs` - 更新4处硬编码消息为国际化调用
+
+---
+
 ### v1.0.6.4 (2026-01-30)
 
 #### 🎉 新特性 | New Features
