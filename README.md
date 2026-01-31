@@ -44,9 +44,17 @@ AzerothCore General Launcher is a graphical tool developed based on WPF, designe
 
 #### 🔧 优化改进 | Optimizations
 
-**完善国际化支持 | Enhanced Internationalization**
-- 🇨🇳 添加6个新的语言资源键用于自动重启功能
-- 🇺🇸 Added 6 new language resource keys for auto-restart feature
+**完整国际化支持 | Complete Internationalization Support**
+- 🇨🇳 添加 22 个新的语言资源键，覆盖所有服务器启动、停止、异常日志
+- 🇺🇸 Added 22 new language resource keys covering all server startup, stop, and exception logs
+
+**服务器命令格式优化 | Server Command Format Optimization**
+- 🇨🇳 命令前缀从 `>>>` 改为 `AC>`，更符合 AzerothCore 风格
+- 🇺🇸 Command prefix changed from `>>>` to `AC>` for better AzerothCore style
+
+**下拉菜单深色主题 | Dropdown Menu Dark Theme**
+- 🇨🇳 常用命令下拉菜单背景色改为深色（#050A14），更统一美观
+- 🇺🇸 Common commands dropdown menu background changed to dark color (#050A14) for better consistency
 
 **改进日志消息 | Improved Log Messages**
 - 🇨🇳 优化重启倒计时消息格式，使用 `string.Format()` 支持参数化
@@ -58,6 +66,18 @@ AzerothCore General Launcher is a graphical tool developed based on WPF, designe
 
 #### 🐛 Bug 修复 | Bug Fixes
 
+**修复单文件发布错误 | Fixed Single File Publishing Error**
+- 🇨🇳 修复 "Unknown hard error" 错误：添加编码提供程序异常保护
+- 🇺🇸 Fixed "Unknown hard error": Added encoding provider exception protection
+
+**修复重复字典键 | Fixed Duplicate Dictionary Key**
+- 🇨🇳 删除 `LanguageManager.cs` 中重复的 `msgPasswordChangeFailed` 键
+- 🇺🇸 Removed duplicate `msgPasswordChangeFailed` key in `LanguageManager.cs`
+
+**修复所有硬编码中文字符串 | Fixed All Hardcoded Chinese Strings**
+- 🇨🇳 彻底修复所有服务器启动、停止、异常日志的硬编码中文问题
+- 🇺🇸 Completely fixed all hardcoded Chinese text in server startup, stop, and exception logs
+
 **修复自动重启消息无国际化 | Fixed Auto-Restart Messages Without Internationalization**
 - 🇨🇳 修复崩溃和重启倒计时消息硬编码中文的问题
 - 🇺🇸 Fixed hardcoded Chinese text in crash and restart countdown messages
@@ -67,17 +87,42 @@ AzerothCore General Launcher is a graphical tool developed based on WPF, designe
 - 🇺🇸 Fixed parameter order and formatting issues in restart messages
 
 #### 📝 技术细节 | Technical Details
-- 🇨🇳 新增语言资源 | 🇺🇸 New Language Resources:
-  - `logAuthServerCrashed` - 认证服务器崩溃消息 | Auth server crash message
-  - `logWorldServerCrashed` - 世界服务器崩溃消息 | World server crash message
-  - `logRestartingIn` - 重启倒计时开始消息 | Restart countdown start message
-  - `logRestartCountdown` - 重启倒计时消息 | Restart countdown message
-  - `logAuthServerName` - 认证服务器名称 | Auth server name
-  - `logWorldServerName` - 世界服务器名称 | World server name
+- 🇨🇳 新增语言资源（共 22 个）| 🇺🇸 New Language Resources (22 total):
+  - **自动重启相关 | Auto-Restart Related (6)**:
+    - `logAuthServerCrashed` - 认证服务器崩溃消息 | Auth server crash message
+    - `logWorldServerCrashed` - 世界服务器崩溃消息 | World server crash message
+    - `logRestartingIn` - 重启倒计时开始消息 | Restart countdown start message
+    - `logRestartCountdown` - 重启倒计时消息 | Restart countdown message
+    - `logAuthServerName` - 认证服务器名称 | Auth server name
+    - `logWorldServerName` - 世界服务器名称 | World server name
+  
+  - **停止服务器相关 | Server Stop Related (8)**:
+    - `logStoppingWorldServer` - 正在停止世界服务器 | Stopping world server
+    - `logWorldServerStopped` - 世界服务器已停止 | World server stopped
+    - `logWorldServerStopException` - 世界服务器停止异常 | World server stop exception
+    - `logStoppingAuthServer` - 正在停止认证服务器 | Stopping auth server
+    - `logAuthServerStopped` - 认证服务器已停止 | Auth server stopped
+    - `logAuthServerStopException` - 认证服务器停止异常 | Auth server stop exception
+    - `logStoppingMySQLProcesses` - 正在停止 MySQL 进程 | Stopping MySQL processes
+    - `logAllServersStopped` - 所有服务器已停止 | All servers stopped
+  
+  - **启动服务器相关 | Server Start Related (5)**:
+    - `logAuthServerStarted2` - 认证服务器已启动 | Auth server started
+    - `logAuthServerStartFailed` - 认证服务器启动失败 | Auth server start failed
+    - `logAuthServerStartException` - 认证服务器启动异常 | Auth server start exception
+    - `logWorldServerStartFailed` - 世界服务器启动失败 | World server start failed
+    - `logWorldServerStartException` - 世界服务器启动异常 | World server start exception
+  
+  - **其他日志 | Other Logs (3)**:
+    - `logProgramClosing` - 程序关闭消息 | Program closing message
+    - `logFoundOldUpdater` - 发现旧更新程序 | Found old updater
+    - `msgCommandSent` - 命令发送消息 | Command sent message
 
 #### 📦 修改的文件 | Modified Files
-- `LanguageManager.cs` - 添加6个新的语言资源键
-- `MainWindow.xaml.cs` - 更新4处硬编码消息为国际化调用
+- `App.xaml.cs` - 添加编码提供程序异常保护
+- `LanguageManager.cs` - 添加 22 个新的语言资源键，删除重复键
+- `MainWindow.xaml.cs` - 更新所有硬编码消息为国际化调用
+- `MainWindow.xaml` - 更新下拉菜单背景色
 
 ---
 
