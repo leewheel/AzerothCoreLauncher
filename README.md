@@ -22,6 +22,130 @@ AzerothCore General Launcher is a graphical tool developed based on WPF, designe
 
 ## 更新日志 | Changelog
 
+### v1.0.7.0 (2026-02-03)
+
+#### 🎉 新特性 | New Features
+
+**命令系统全面优化 | Command System Comprehensive Optimization**
+- 🇨🇳 397 个控制台命令的完整中文翻译，格式：【中文简述】【语法】【说明】
+- 🇺🇸 Complete Chinese translation for 397 console commands, format: [Summary][Syntax][Description]
+
+**智能语言切换 | Intelligent Language Switching**
+- 🇨🇳 中文状态显示结构化翻译，英文状态显示原始 help 文本
+- 🇺🇸 Chinese mode shows structured translation, English mode shows original help text
+
+**命令列表过滤优化 | Command List Filtering Optimization**
+- 🇨🇳 只显示 256 个控制台可用命令（Console::Yes），隐藏不可用命令
+- 🇺🇸 Only shows 256 console-available commands (Console::Yes), hides unavailable commands
+
+**BlizzardLike 版本验证 | BlizzardLike Version Validation**
+- 🇨🇳 自动检测 worldserver.exe 的 ProductName 属性
+- 🇺🇸 Automatically detects worldserver.exe ProductName property
+- 🇨🇳 版本不匹配时弹出警告提示
+- 🇺🇸 Shows warning when version mismatch detected
+
+#### 🔧 优化改进 | Optimizations
+
+**Updater 更新器重大修复 | Updater Major Fixes**
+- 🇨🇳 修复数据库配置读取（支持 `key = value` 格式，正确跳过注释）
+- 🇺🇸 Fixed database config reading (supports `key = value` format, correctly skips comments)
+- 🇨🇳 MySQL 自动启动功能（路径规范化、输出读取、错误诊断）
+- 🇺🇸 MySQL auto-start feature (path normalization, output reading, error diagnosis)
+- 🇨🇳 SQL 变量支持（AllowUserVariables=true）
+- 🇺🇸 SQL variable support (AllowUserVariables=true)
+- 🇨🇳 更新失败重试机制（显示重试按钮，无需重启程序）
+- 🇺🇸 Update failure retry mechanism (shows retry button, no restart needed)
+
+**命令翻译质量提升 | Command Translation Quality Improvement**
+- 🇨🇳 所有参数占位符已翻译（$account → $账号, $password → $密码等）
+- 🇺🇸 All parameter placeholders translated ($account → $账号, $password → $密码, etc.)
+- 🇨🇳 关键词智能替换（Create → 创建, Delete → 删除等）
+- 🇺🇸 Intelligent keyword replacement (Create → 创建, Delete → 删除, etc.)
+
+#### 🐛 Bug 修复 | Bug Fixes
+
+**修复重复键错误 | Fixed Duplicate Key Error**
+- 🇨🇳 删除 `LanguageManager.cs` 中重复的语言资源键
+- 🇺🇸 Removed duplicate language resource keys in `LanguageManager.cs`
+
+**修复编译错误 | Fixed Compilation Errors**
+- 🇨🇳 修复 `CommandTranslationService.cs` 中的语言检查逻辑（枚举类型比较）
+- 🇺🇸 Fixed language check logic in `CommandTranslationService.cs` (enum type comparison)
+- 🇨🇳 修复 `ConfigWindow.xaml.cs` 中缺失的 using 引用
+- 🇺🇸 Fixed missing using reference in `ConfigWindow.xaml.cs`
+
+**修复 Updater 数据库问题 | Fixed Updater Database Issues**
+- 🇨🇳 修复配置键名不匹配（SqlServerIP, ServerPort, SqlServerUser, SqlServerPassword）
+- 🇺🇸 Fixed config key name mismatch (SqlServerIP, ServerPort, SqlServerUser, SqlServerPassword)
+- 🇨🇳 修复 MySQL 启动路径规范化问题（移除 `\.\` 前缀）
+- 🇺🇸 Fixed MySQL startup path normalization issue (removed `\.\` prefix)
+- 🇨🇳 修复 SQL 变量支持问题（添加 AllowUserVariables=true）
+- 🇺🇸 Fixed SQL variable support issue (added AllowUserVariables=true)
+
+#### 📝 技术细节 | Technical Details
+
+**命令翻译系统 | Command Translation System**
+- 🇨🇳 翻译数据来源：数据库 `command` 表（397 个命令）
+- 🇺🇸 Translation data source: Database `command` table (397 commands)
+- 🇨🇳 翻译生成脚本：`generate_command_translations.py`
+- 🇺🇸 Translation generation script: `generate_command_translations.py`
+- 🇨🇳 自动更新脚本：`update_command_translations.py`
+- 🇺🇸 Auto-update script: `update_command_translations.py`
+
+**版本验证系统 | Version Validation System**
+- 🇨🇳 使用 `FileVersionInfo.GetVersionInfo()` 读取 ProductName
+- 🇺🇸 Uses `FileVersionInfo.GetVersionInfo()` to read ProductName
+- 🇨🇳 验证时机：启动时 + 配置切换时
+- 🇺🇸 Validation timing: On startup + On config switch
+
+**Updater 改进 | Updater Improvements**
+- 🇨🇳 配置文件支持 `key = value` 格式（带空格）
+- 🇺🇸 Config file supports `key = value` format (with spaces)
+- 🇨🇳 自动跳过注释行（`#` 开头）
+- 🇺🇸 Automatically skips comment lines (starting with `#`)
+- 🇨🇳 MySQL 输出实时读取（帮助诊断启动问题）
+- 🇺🇸 MySQL output real-time reading (helps diagnose startup issues)
+- 🇨🇳 SQL 执行失败时停止更新流程并显示重试按钮
+- 🇺🇸 Stops update process and shows retry button when SQL execution fails
+
+#### 📦 修改的文件 | Modified Files
+
+**启动器 | Launcher**:
+- `CommandTranslationService.cs` - 集成 397 个命令翻译，修复语言检查逻辑
+- `CommandManager.cs` - 命令列表过滤（只显示 Console::Yes 命令）
+- `ServerVersionValidator.cs` - 新建，BlizzardLike 版本验证
+- `ConfigWindow.xaml.cs` - 添加版本切换验证
+- `MainWindow.xaml.cs` - 添加启动时版本验证
+- `LanguageManager.cs` - 添加版本验证语言资源
+
+**更新器 | Updater**:
+- `AzerothCoreUpdater/Program.cs` - 修复数据库配置读取、MySQL 启动、SQL 变量支持
+
+**脚本 | Scripts**:
+- `generate_command_translations.py` - 新建，生成命令翻译
+- `update_command_translations.py` - 新建，更新 C# 文件
+- `command_translations_generated.cs` - 新建，生成的翻译数据
+
+#### ✅ 验证方法 | Verification Method
+
+**命令翻译验证 | Command Translation Verification**
+- 🇨🇳 切换到中文状态，查看命令列表，应显示结构化中文翻译
+- 🇺🇸 Switch to Chinese mode, view command list, should show structured Chinese translation
+- 🇨🇳 切换到英文状态，查看命令列表，应显示原始英文 help 文本
+- 🇺🇸 Switch to English mode, view command list, should show original English help text
+
+**版本验证 | Version Validation**
+- 🇨🇳 切换到 BlizzardLike 版本，如果 worldserver.exe 不是仿官版，应弹出警告
+- 🇺🇸 Switch to BlizzardLike version, if worldserver.exe is not BlizzardLike, should show warning
+
+**Updater 验证 | Updater Verification**
+- 🇨🇳 停止 MySQL，运行更新程序，应自动启动 MySQL 并执行 SQL 更新
+- 🇺🇸 Stop MySQL, run updater, should auto-start MySQL and execute SQL updates
+- 🇨🇳 如果更新失败，应显示重试按钮，点击重试应重新执行更新流程
+- 🇺🇸 If update fails, should show retry button, clicking retry should re-execute update process
+
+---
+
 ### v1.0.6.7 (2026-01-31)
 
 #### 🎉 新特性 | New Features
