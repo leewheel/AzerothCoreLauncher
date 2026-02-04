@@ -22,6 +22,77 @@ AzerothCore General Launcher is a graphical tool developed based on WPF, designe
 
 ## 更新日志 | Changelog
 
+### v1.0.7.1 (2026-02-04)
+
+#### 🐛 Bug 修复 | Bug Fixes
+
+**修复账号密码长度限制 | Fixed Account Password Length Limit**
+- 🇨🇳 放宽用户名和密码长度限制：从最多 5 个字符改为最多 15 个字符
+- 🇺🇸 Relaxed username and password length limit: from max 5 characters to max 15 characters
+- 🇨🇳 最小长度保持为 1 个字符（不变）
+- 🇺🇸 Minimum length remains 1 character (unchanged)
+
+#### 📝 技术细节 | Technical Details
+
+**修改的验证规则 | Modified Validation Rules**
+- 🇨🇳 用户名长度：1-5 个字符 → **1-15 个字符**
+- 🇺🇸 Username length: 1-5 characters → **1-15 characters**
+- 🇨🇳 密码长度：1-5 个字符 → **1-15 个字符**
+- 🇺🇸 Password length: 1-5 characters → **1-15 characters**
+
+**影响的功能 | Affected Features**
+- 🇨🇳 账号注册：用户名和密码长度限制放宽
+- 🇺🇸 Account registration: Username and password length limit relaxed
+- 🇨🇳 密码修改：用户名和密码长度限制放宽
+- 🇺🇸 Password change: Username and password length limit relaxed
+
+**错误提示更新 | Error Message Updates**
+- 🇨🇳 更新中文错误提示："最多5个字符" → "最多15个字符"
+- 🇺🇸 Updated Chinese error messages: "max 5 characters" → "max 15 characters"
+- 🇨🇳 更新英文错误提示："at most 5 characters" → "at most 15 characters"
+- 🇺🇸 Updated English error messages: "at most 5 characters" → "at most 15 characters"
+
+#### 📦 修改的文件 | Modified Files
+
+- `MainWindow.xaml.cs` - 账号注册和密码修改验证逻辑
+- `LanguageManager.cs` - 中英文错误提示文本
+
+#### ✅ 验证方法 | Verification Method
+
+**账号注册测试 | Account Registration Test**
+- 🇨🇳 尝试注册 1 个字符的用户名和密码（应该成功）
+- 🇺🇸 Try registering with 1-character username and password (should succeed)
+- 🇨🇳 尝试注册 15 个字符的用户名和密码（应该成功）
+- 🇺🇸 Try registering with 15-character username and password (should succeed)
+- 🇨🇳 尝试注册 16 个字符的用户名或密码（应该提示"最多15个字符"）
+- 🇺🇸 Try registering with 16-character username or password (should show "at most 15 characters" error)
+
+**密码修改测试 | Password Change Test**
+- 🇨🇳 尝试修改为 15 个字符的密码（应该成功）
+- 🇺🇸 Try changing to 15-character password (should succeed)
+- 🇨🇳 尝试修改为 16 个字符的密码（应该提示"最多15个字符"）
+- 🇺🇸 Try changing to 16-character password (should show "at most 15 characters" error)
+
+#### ⚠️ 注意事项 | Notes
+
+**数据库兼容性 | Database Compatibility**
+- 🇨🇳 AzerothCore 数据库 `account` 表的 `username` 字段类型为 `VARCHAR(32)`
+- 🇺🇸 AzerothCore database `account` table `username` field type is `VARCHAR(32)`
+- 🇨🇳 修改后的最大长度 15 完全在数据库字段长度范围内
+- 🇺🇸 Modified max length 15 is well within database field length limit
+- 🇨🇳 不需要修改数据库结构
+- 🇺🇸 No database structure modification required
+
+**向后兼容性 | Backward Compatibility**
+- 🇨🇳 现有的短用户名和密码（1-5 个字符）仍然有效
+- 🇺🇸 Existing short usernames and passwords (1-5 characters) remain valid
+- 🇨🇳 不影响已注册的账号
+- 🇺🇸 Does not affect already registered accounts
+- 🇨🇳 只是放宽了新注册账号的限制
+- 🇺🇸 Only relaxes restrictions for new account registrations
+
+---
+
 ### v1.0.7.0 (2026-02-03)
 
 #### 🎉 新特性 | New Features
