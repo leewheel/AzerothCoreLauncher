@@ -1,4 +1,4 @@
-# AzerothCore 通用启动器
+# AzerothCore 通用启动器/ Wotlk PlayerBots 仿官版启动器
 # AzerothCore General Launcher
 ## Since it integrates the.NET 10 environment and all updates, the single file is relatively large.
 
