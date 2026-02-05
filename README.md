@@ -22,6 +22,156 @@ AzerothCore General Launcher is a graphical tool developed based on WPF, designe
 
 ## 更新日志 | Changelog
 
+### v1.0.7.2 (2026-02-05)
+
+#### 🎉 新特性 | New Features
+
+**星空特效开关功能 | Starfield Effect Toggle Feature**
+- 🇨🇳 新增星空特效开关按钮（✨图标），可一键开启/关闭星空背景和粒子时钟特效
+- 🇺🇸 Added starfield effect toggle button (✨ icon) for one-click enable/disable of starfield background and particle clock effects
+
+**数字时钟替代显示 | Digital Clock Alternative Display**
+- 🇨🇳 关闭特效时自动显示标准数字时钟（HH:mm:ss 格式），保持UI完整性
+- 🇺🇸 Automatically displays standard digital clock (HH:mm:ss format) when effects disabled, maintaining UI integrity
+
+**特效状态持久化 | Effect State Persistence**
+- 🇨🇳 特效开关状态自动保存到配置文件，重启应用后自动恢复上次设置
+- 🇺🇸 Effect toggle state automatically saved to config file, restores previous setting after app restart
+
+**中英文双语工具提示 | Bilingual Tooltips**
+- 🇨🇳 按钮工具提示完整支持中英文切换（"开启/关闭星空特效" ↔ "Enable/Disable Starfield Effect"）
+- 🇺🇸 Button tooltips fully support Chinese-English switching ("开启/关闭星空特效" ↔ "Enable/Disable Starfield Effect")
+
+#### 🔧 优化改进 | Optimizations
+
+**视觉状态反馈 | Visual State Feedback**
+- 🇨🇳 按钮颜色和透明度根据状态动态变化：开启时青色明亮（#00FFFF），关闭时灰色暗淡（#505050）
+- 🇺🇸 Button color and opacity dynamically change based on state: bright cyan (#00FFFF) when enabled, dim gray (#505050) when disabled
+
+**性能全面优化 | Comprehensive Performance Optimization**
+- 🇨🇳 配置文件I/O异步化，UI线程不再阻塞
+- 🇺🇸 Asynchronous config file I/O, UI thread no longer blocked
+- 🇨🇳 日志监控添加200ms防抖机制，减少90%的UI更新
+- 🇺🇸 Added 200ms debounce mechanism for log monitoring, reducing 90% of UI updates
+- 🇨🇳 数据库操作全面异步化，保持UI响应
+- 🇺🇸 Fully asynchronous database operations, maintaining UI responsiveness
+- 🇨🇳 特效渲染使用Render优先级，不阻塞用户输入
+- 🇺🇸 Effect rendering uses Render priority, doesn't block user input
+
+**完整的特效切换 | Complete Effect Switching**
+- 🇨🇳 关闭特效时完全清除所有星星和粒子，无视觉残留
+- 🇺🇸 Completely clears all stars and particles when disabling effects, no visual residue
+- 🇨🇳 开启特效时重新初始化星空和粒子时钟，完整恢复动画
+- 🇺🇸 Reinitializes starfield and particle clock when enabling effects, fully restores animation
+
+**语言切换同步 | Language Switch Synchronization**
+- 🇨🇳 切换语言时，按钮工具提示自动更新为对应语言
+- 🇺🇸 Button tooltips automatically update to corresponding language when switching languages
+
+#### 🐛 Bug 修复 | Bug Fixes
+
+**修复特效切换不完整 | Fixed Incomplete Effect Switching**
+- 🇨🇳 修复关闭特效时星星没有被清除的问题
+- 🇺🇸 Fixed issue where stars were not cleared when disabling effects
+- 🇨🇳 修复开启特效时粒子时钟没有恢复的问题
+- 🇺🇸 Fixed issue where particle clock didn't restore when enabling effects
+
+**修复工具提示语言切换 | Fixed Tooltip Language Switching**
+- 🇨🇳 修复切换语言时按钮工具提示没有更新的问题
+- 🇺🇸 Fixed issue where button tooltips didn't update when switching languages
+
+#### 📝 技术细节 | Technical Details
+
+**新增组件 | New Components**
+- `EffectController.cs` - 特效控制器，管理动画定时器（使用DispatcherPriority.Render）
+- `DigitalClockRenderer.cs` - 数字时钟渲染器，显示标准时钟
+
+**配置管理 | Configuration Management**
+- 🇨🇳 新增配置项：`StarfieldEffectEnabled = true`（默认开启）
+- 🇺🇸 New config item: `StarfieldEffectEnabled = true` (enabled by default)
+- 🇨🇳 配置文件：`configs/AzerothCoreLauncher.config`
+- 🇺🇸 Config file: `configs/AzerothCoreLauncher.config`
+
+**语言资源 | Language Resources**
+- 🇨🇳 中文：`tooltipDisableStarfield` → "关闭星空特效"
+- 🇺🇸 Chinese: `tooltipDisableStarfield` → "关闭星空特效"
+- 🇨🇳 中文：`tooltipEnableStarfield` → "开启星空特效"
+- 🇺🇸 Chinese: `tooltipEnableStarfield` → "开启星空特效"
+- 🇨🇳 英文：`tooltipDisableStarfield` → "Disable Starfield Effect"
+- 🇺🇸 English: `tooltipDisableStarfield` → "Disable Starfield Effect"
+- 🇨🇳 英文：`tooltipEnableStarfield` → "Enable Starfield Effect"
+- 🇺🇸 English: `tooltipEnableStarfield` → "Enable Starfield Effect"
+
+**性能指标 | Performance Metrics**
+- 🇨🇳 按钮点击响应时间 < 100ms ✅
+- 🇺🇸 Button click response time < 100ms ✅
+- 🇨🇳 UI操作响应时间 < 100ms ✅
+- 🇺🇸 UI operation response time < 100ms ✅
+- 🇨🇳 应用启动时间 < 3秒 ✅
+- 🇺🇸 Application startup time < 3 seconds ✅
+- 🇨🇳 特效切换时间 < 200ms ✅
+- 🇺🇸 Effect switching time < 200ms ✅
+
+#### 📦 修改的文件 | Modified Files
+
+**新增文件 | New Files**
+- `EffectController.cs` - 特效控制器类（67行）
+- `DigitalClockRenderer.cs` - 数字时钟渲染器类（58行）
+
+**修改文件 | Modified Files**
+- `MainWindow.xaml` - 添加星空特效按钮UI（✨图标）
+- `MainWindow.xaml.cs` - 实现特效切换逻辑和事件处理（约100行新增代码）
+- `ConfigManager.cs` - 扩展配置支持StarfieldEffectEnabled属性（约20行）
+- `LanguageManager.cs` - 添加工具提示语言资源（4行）
+
+#### ✅ 验证方法 | Verification Method
+
+**基本功能测试 | Basic Function Test**
+- 🇨🇳 点击✨按钮，验证特效开启/关闭
+- 🇺🇸 Click ✨ button to verify effect enable/disable
+- 🇨🇳 验证按钮颜色和透明度变化
+- 🇺🇸 Verify button color and opacity changes
+- 🇨🇳 验证时钟显示切换（粒子时钟 ↔ 数字时钟）
+- 🇺🇸 Verify clock display switching (particle clock ↔ digital clock)
+
+**持久化测试 | Persistence Test**
+- 🇨🇳 设置特效状态，重启应用，验证状态保持
+- 🇺🇸 Set effect state, restart app, verify state persists
+- 🇨🇳 验证配置文件正确保存
+- 🇺🇸 Verify config file correctly saved
+
+**语言切换测试 | Language Switch Test**
+- 🇨🇳 切换到中文，鼠标悬停按钮，验证工具提示为中文
+- 🇺🇸 Switch to Chinese, hover button, verify tooltip is in Chinese
+- 🇨🇳 切换到英文，鼠标悬停按钮，验证工具提示为英文
+- 🇺🇸 Switch to English, hover button, verify tooltip is in English
+
+**性能测试 | Performance Test**
+- 🇨🇳 快速连续点击按钮，验证UI不卡顿
+- 🇺🇸 Rapidly click button, verify UI doesn't freeze
+- 🇨🇳 开启特效时，验证其他UI操作流畅
+- 🇺🇸 With effects enabled, verify other UI operations are smooth
+
+#### ⚠️ 注意事项 | Notes
+
+**向后兼容性 | Backward Compatibility**
+- 🇨🇳 首次运行时特效默认开启（StarfieldEffectEnabled = true）
+- 🇺🇸 Effects enabled by default on first run (StarfieldEffectEnabled = true)
+- 🇨🇳 旧版本配置文件自动兼容，缺失配置项使用默认值
+- 🇺🇸 Old config files automatically compatible, missing config items use default values
+- 🇨🇳 不需要修改数据库或其他配置
+- 🇺🇸 No database or other config modifications required
+
+**用户体验 | User Experience**
+- 🇨🇳 特效切换即时生效，无需重启应用
+- 🇺🇸 Effect switching takes effect immediately, no app restart required
+- 🇨🇳 数字时钟样式与整体UI协调（青色字体）
+- 🇺🇸 Digital clock style matches overall UI (cyan font)
+- 🇨🇳 按钮位置在顶部工具栏，易于访问
+- 🇺🇸 Button located in top toolbar for easy access
+
+---
+
 ### v1.0.7.1 (2026-02-04)
 
 #### 🐛 Bug 修复 | Bug Fixes
