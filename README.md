@@ -2,11 +2,15 @@
 # AzerothCore General Launcher
 ## Since it integrates the.NET 10 environment and all updates, the single file is relatively large.
 
-<img width="2204" height="1706" alt="image" src="https://github.com/user-attachments/assets/5162cba3-3396-4f8c-bdd9-62095398a275" />
-<img width="2194" height="1700" alt="image" src="https://github.com/user-attachments/assets/39591bc5-0aae-448c-8d8d-c90fb4b5eee8" />
-<img width="2198" height="1718" alt="image" src="https://github.com/user-attachments/assets/66599669-6b9a-4bf0-bf3c-6abad60460e2" />
-<img width="2198" height="1706" alt="image" src="https://github.com/user-attachments/assets/ca9ae9e6-dcf5-461e-920b-4a776f0e6be3" />
-<img width="2212" height="1716" alt="image" src="https://github.com/user-attachments/assets/a55a45c9-48ca-4d37-be31-133ff1c1822c" />
+<img width="825" height="643" alt="image" src="https://github.com/user-attachments/assets/eb51e506-4d05-4ae7-b80e-32b06f8e1d67" />
+<img width="827" height="646" alt="image" src="https://github.com/user-attachments/assets/ca8ead52-a1f9-428b-ad63-fa9161ef67c5" />
+<img width="827" height="643" alt="image" src="https://github.com/user-attachments/assets/01e47738-9326-4214-85c7-cbcd03d46383" />
+ctrl+shift+F12 
+<img width="824" height="643" alt="image" src="https://github.com/user-attachments/assets/1f266918-1c34-4031-affa-d15a281354c2" />
+<img width="827" height="643" alt="image" src="https://github.com/user-attachments/assets/58bd0c4c-c784-4242-bb12-70592bb0805f" />
+<img width="700" height="548" alt="image" src="https://github.com/user-attachments/assets/d10b4b27-a57c-46bd-a9c4-910acabb3ec3" />
+
+
 
 
 
